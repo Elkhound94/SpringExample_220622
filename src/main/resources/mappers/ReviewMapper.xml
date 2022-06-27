@@ -19,4 +19,65 @@
 		WHERE
 			`id` = #{id}
 	</select> 
+	
+	<insert id="insertReview" parameterType="com.example.lesson03.model.Review">
+	 INSERT INTO `review`
+	 (
+	 	`storeName`
+		,`menu`
+		,`userName`
+		,`point`
+		,`review`
+		,`createdAt`
+		,`updatedAt`
+	 )
+	 VALUES
+	 (
+	 	#{storeName}
+	 	, #{menu}
+	 	, #{userName}
+	 	, #{point}
+	 	, #{review}
+	 	, Now()
+	 	, Now()
+	 )
+	</insert>
+	
+	<insert id="insertReviewAsField" parameterType="map">
+		INSERT INTO `review`
+	 (
+	 	`storeName`
+		,`menu`
+		,`userName`
+		,`point`
+		,`review`
+		,`createdAt`
+		,`updatedAt`
+	 )
+	 VALUES
+	 (
+	 	#{storeName}
+	 	, #{menu}
+	 	, #{userName}
+	 	, #{point}
+	 	, #{review}
+	 	, Now()
+	 	, Now()
+	 )
+	</insert>
+	
+	<update id="updateReviewById" parameterType="map">
+		UPDATE `review`
+		SET
+			`review` = #{review}
+			, `updatedAt` = NOW()
+		WHERE
+			`id` = #{id}
+	</update>
+	<delete id="deleteReviewById">
+	DELETE
+	FROM `review`
+	WHERE
+		`id` = #{id}
+	</delete>
  </mapper>
