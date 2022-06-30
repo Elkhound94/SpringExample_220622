@@ -33,8 +33,11 @@ public class NewStudentController {
 		newStudentBO.addNewStudent(newStudent);
 		
 		// db select => 가입했던 데이터
+		newStudent = newStudentBO.getStudentById(newStudent.getId());
 		
 		// model에 담는다.
+		model.addAttribute("result", newStudent);
+		model.addAttribute("subject", "학생 정보");
 		
 		// return jsp 경로
 		return "lesson04/afterStudentView";
